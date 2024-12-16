@@ -27,7 +27,13 @@
             
             @auth
               @if (auth()->user()->hasRole('admin'))
-                <a href="#" class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Dashboard</a>
+                <a href="{{ route('dashboard') }}" 
+                @if (Route::currentRouteName() === 'dashboard')
+                    class="inline-flex items-center border-b-2 border-lime-600 px-1 pt-1 text-sm font-medium text-gray-900"
+                  @else
+                    class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                @endif
+                >Dashboard</a>
               @endif
             @endauth
           </div>
