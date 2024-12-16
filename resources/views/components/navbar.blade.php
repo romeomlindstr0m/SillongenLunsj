@@ -24,7 +24,12 @@
             >Lunchmenu</a>
 
             <a href="#" class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Orders</a>
-            <a href="#" class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Dashboard</a>
+            
+            @auth
+              @if (auth()->user()->hasRole('admin'))
+                <a href="#" class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Dashboard</a>
+              @endif
+            @endauth
           </div>
         </div>
         <div class="hidden sm:ml-6 sm:flex sm:items-center">
@@ -43,14 +48,24 @@
             <div id="user-menu-dropdown" class="hidden relative text-left">
               <div class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none" role="menu" aria-orientation="vertical" tabindex="-1">
                 <div class="px-4 py-3" role="none">
-                  <p class="text-sm" role="none">Signed in as</p>
-                  <p class="truncate text-sm font-medium text-gray-900" role="none">{{ auth()->user()->email }}</p>
+                  @auth
+                    <p class="text-sm" role="none">Signed in as</p>
+                    <p class="truncate text-sm font-medium text-gray-900" role="none">{{ auth()->user()->email }}</p>
+                  @endauth
+                  @guest
+                    <p class="text-sm" role="none">You are not signed in</p>
+                  @endguest
                 </div>
                 <div class="py-1" role="none">
-                  <form method="POST" action="{{ route('logout') }}" role="none">
-                    @csrf
-                    <button type="submit" class="block w-full px-4 py-2 text-left text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-3">Sign out</button>
-                  </form>
+                  @auth
+                    <form method="POST" action="{{ route('logout') }}" role="none">
+                      @csrf
+                      <button type="submit" class="block w-full px-4 py-2 text-left text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-3">Sign out</button>
+                    </form>
+                  @endauth
+                  @guest
+                    <a href="{{ route('login') }}" class="block w-full px-4 py-2 text-left text-sm text-gray-700">Sign in</a>
+                  @endguest
                 </div>
               </div>
             </div>
