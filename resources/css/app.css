@@ -4,5 +4,5 @@
 
 @font-face {
     font-family: 'Inter Variable';
-    src: url('fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+    src: url('/public/fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
 }
