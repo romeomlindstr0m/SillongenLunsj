@@ -7,6 +7,7 @@
   @vite('resources/css/app.css')
 </head>
 <body class="h-full font-inter">
+<x-navbar />
 
 @session('status')
   <x-notification-banner :message="session('status')" />
