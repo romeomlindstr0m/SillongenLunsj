@@ -38,6 +38,31 @@
                 </div>
             @endforeach
         </div>
-      </div>         
+      </div>
+
+      <div class="bg-white">
+        <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+
+          <div class="rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:p-8">
+            <div class="flow-root">
+              <dl class="-my-4 divide-y divide-gray-200 text-sm">
+                <div class="flex items-center justify-between py-4">
+                  <dt class="text-base font-medium text-gray-900">Order total</dt>
+                  <dd class="text-base font-medium text-gray-900">0,-</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+      
+          <div class="mt-10 flex gap-3">
+            <button type="submit" class="w-full rounded-md border border-transparent bg-red-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">
+                Reset form
+            </button>
+            <button type="submit" class="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">
+                Checkout
+            </button>
+          </div>
+        </div>
+      </div>      
 </body>
 </html>
