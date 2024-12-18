@@ -6,6 +6,7 @@ use App\Http\Controllers\ItemsController;
 
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Gate;
+use App\Http\Controllers\OrderController;
 
 Route::get('/', function() {
     return redirect()->route('home');
@@ -38,3 +39,7 @@ Route::get('/users/create', [UserController::class, 'create'])->name('users.crea
 Route::post('/users/store', [UserController::class, 'store'])->name('users.store')->middleware('auth');
 Route::post('/users/{id}/destroy', [UserController::class, 'destroy'])->name('users.destroy')->middleware('auth');
 Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit')->middleware('auth');
+
+Route::get('/orders', [OrderController::class, 'index'])->name('orders.index')->middleware('auth');
+Route::get('/orders/{id}/show', [OrderController::class, 'show'])->name('orders.show')->middleware('auth');
+Route::post('/orders/{id}/destroy', [OrderController::class, 'destroy'])->name('orders.destroy')->middleware('auth');
