@@ -64,7 +64,7 @@
         
             </ul>
           </div>
-          <input type="hidden" name="role_id" id="role-id-input" value="">
+          <input type="hidden" class="select-input" name="role_id" value="">
         </div>
 
         <div>
