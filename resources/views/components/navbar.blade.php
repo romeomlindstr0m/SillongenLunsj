@@ -13,7 +13,7 @@
             @else
               class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
             @endif
-            >Home</a>
+            >Hjem</a>
 
             <a href="{{ route('items.index') }}"
             @if (Route::currentRouteName() === 'items.index')
@@ -21,7 +21,7 @@
             @else
               class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
             @endif
-            >Lunchmenu</a>
+            >Lunsjmeny</a>
 
             @auth
               @if (auth()->user()->hasRole('admin'))
@@ -31,7 +31,7 @@
                 @else
                   class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
                 @endif
-                >Orders</a>
+                >Bestillinger</a>
               @endif
             @endauth
 
@@ -43,7 +43,7 @@
                   @else
                     class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
                 @endif
-                >Dashboard</a>
+                >Oversikt</a>
               @endif
             @endauth
           </div>
@@ -51,37 +51,45 @@
         <div class="hidden sm:ml-6 sm:flex sm:items-center">
   
           <div class="relative ml-3">
-            <div>
-              <button type="button" class="relative flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                <span class="absolute -inset-1.5"></span>
-                <span class="sr-only">Open user menu</span>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-                </svg>                
-              </button>
+            <div class="flex">
+              <div class="self-center">
+                <button type="button" class="relative flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                  <span class="absolute -inset-1.5"></span>
+                  <span class="sr-only">Open user menu</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                  </svg>                
+                </button>
+              </div>
+
+              @guest
+                <div class="flex items-center text-gray-500 hover:text-gray-700">
+                  <a href="{{ route('login') }}" class="block w-full pl-4 py-2 text-left text-sm font-medium">Logg inn</a>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+                  </svg>    
+                </div>            
+              @endguest
             </div>
 
             <div id="user-menu-dropdown" class="hidden relative text-left">
               <div class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none" role="menu" aria-orientation="vertical" tabindex="-1">
                 <div class="px-4 py-3" role="none">
                   @auth
-                    <p class="text-sm" role="none">Signed in as</p>
+                    <p class="text-sm" role="none">Logget inn som</p>
                     <p class="truncate text-sm font-medium text-gray-900" role="none">{{ auth()->user()->email }}</p>
                   @endauth
                   @guest
-                    <p class="text-sm" role="none">You are not signed in</p>
+                    <p class="text-sm" role="none">Du er ikke logget inn.</p>
                   @endguest
                 </div>
                 <div class="py-1" role="none">
                   @auth
                     <form method="POST" action="{{ route('logout') }}" role="none">
                       @csrf
-                      <button type="submit" class="block w-full px-4 py-2 text-left text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-3">Sign out</button>
+                      <button type="submit" class="block w-full px-4 py-2 text-left text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-3">Logg ut</button>
                     </form>
                   @endauth
-                  @guest
-                    <a href="{{ route('login') }}" class="block w-full px-4 py-2 text-left text-sm text-gray-700">Sign in</a>
-                  @endguest
                 </div>
               </div>
             </div>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sillongen | All Items</title>
+  <title>Sillongen | Lunsjmeny</title>
   @vite('resources/css/app.css')
   @vite('resources/js/item-input.js')
 </head>
@@ -67,37 +67,37 @@
             <div class="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
               <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                 <div class="sm:col-span-2">
-                  <label for="contact_person" class="block text-sm/6 font-semibold text-gray-900">Contact person</label>
+                  <label for="contact_person" class="block text-sm/6 font-semibold text-gray-900">Kontaktperson</label>
                   <div class="mt-2.5">
                     <input type="text" name="contact_person" id="contact_person" class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600">
                   </div>
                 </div>
                 <div class="sm:col-span-2">
-                  <label for="email" class="block text-sm/6 font-semibold text-gray-900">Email</label>
+                  <label for="email" class="block text-sm/6 font-semibold text-gray-900">E-postaddresse</label>
                   <div class="mt-2.5">
                     <input type="email" name="email" id="email" autocomplete="email" class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600">
                   </div>
                 </div>
                 <div class="sm:col-span-2">
-                  <label for="phone" class="block text-sm/6 font-semibold text-gray-900">Phone number</label>
+                  <label for="phone" class="block text-sm/6 font-semibold text-gray-900">Telefon</label>
                   <div class="mt-2.5">
                     <input type="tel" name="phone" id="phone" class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600">
                   </div>
                 </div>
                 <div class="sm:col-span-2">
-                  <label for="company" class="block text-sm/6 font-semibold text-gray-900">Company</label>
+                  <label for="company" class="block text-sm/6 font-semibold text-gray-900">Firma</label>
                   <div class="mt-2.5">
                     <input type="text" name="company" id="company" class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600">
                   </div>
                 </div>
                 <div class="sm:col-span-2">
-                  <label for="delivery_location" class="block text-sm/6 font-semibold text-gray-900">Delivery location</label>
+                  <label for="delivery_location" class="block text-sm/6 font-semibold text-gray-900">Leveringssted</label>
                   <div class="mt-2.5">
                     <input type="text" name="delivery_location" id="delivery_location" class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600">
                   </div>
                 </div>
                 <div class="sm:col-span-2">
-                  <label for="message" class="block text-sm/6 font-semibold text-gray-900">Message</label>
+                  <label for="message" class="block text-sm/6 font-semibold text-gray-900">Melding</label>
                   <div class="mt-2.5">
                     <textarea name="message" id="message" rows="4" class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"></textarea>
                   </div>
@@ -115,7 +115,7 @@
             <div class="flow-root">
               <dl class="-my-4 divide-y divide-gray-200 text-sm">
                 <div class="flex items-center justify-between py-4">
-                  <dt class="text-base font-medium text-gray-900">Order total</dt>
+                  <dt class="text-base font-medium text-gray-900">Ordresum</dt>
                   <dd class="text-base font-medium text-gray-900">0,-</dd>
                 </div>
               </dl>
@@ -124,10 +124,10 @@
       
           <div class="mt-10 flex gap-3">
             <button class="w-full rounded-md border border-transparent bg-red-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-red-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">
-                Reset form
+              Fjern alle felt
             </button>
             <button type="submit" class="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">
-                Checkout
+              Send ordre
             </button>
           </form>
           </div>
