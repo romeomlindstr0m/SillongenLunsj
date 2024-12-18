@@ -33,6 +33,9 @@ Route::post('/register', [AuthenticationController::class, 'register'])->name('r
 Route::post('/logout', [AuthenticationController::class, 'logout'])->name('logout')->middleware('auth');
 
 Route::get('/items', [ItemsController::class, 'index'])->name('items.index');
+Route::get('items/table', [ItemsController::class, 'table'])->name('items.table')->middleware('auth');
+Route::get('items/create', [ItemsController::class, 'create'])->name('items.create')->middleware('auth');
+Route::post('items/store', [ItemsController::class, 'store'])->name('items.store')->middleware('auth');
 
 Route::get('/users', [UserController::class, 'index'])->name('users.index')->middleware('auth');
 Route::get('/users/create', [UserController::class, 'create'])->name('users.create')->middleware('auth');
