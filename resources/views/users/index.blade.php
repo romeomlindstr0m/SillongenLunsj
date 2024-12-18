@@ -21,7 +21,7 @@
             <p class="mt-2 text-sm text-gray-700">En liste over alle brukere, inkludert navn, e-post, opprettelsesdato og rolle.</p>
           </div>
           <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-            <a href="{{ route('users.create') }}" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Legg till bruker</a>
+            <a href="{{ route('users.create') }}" class="block rounded-md bg-gray-900 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900">Legg till bruker</a>
           </div>
         </div>
         <div class="mt-8 flow-root">
