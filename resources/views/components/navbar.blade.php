@@ -23,8 +23,18 @@
             @endif
             >Lunchmenu</a>
 
-            <a href="#" class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Orders</a>
-            
+            @auth
+              @if (auth()->user()->hasRole('admin'))
+                <a href="{{ route('orders.index') }}"
+                @if (Route::currentRouteName() === 'orders.index')
+                  class="inline-flex items-center border-b-2 border-lime-600 px-1 pt-1 text-sm font-medium text-gray-900"
+                @else
+                  class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                @endif
+                >Orders</a>
+              @endif
+            @endauth
+
             @auth
               @if (auth()->user()->hasRole('admin'))
                 <a href="{{ route('dashboard') }}" 
