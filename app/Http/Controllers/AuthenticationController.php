@@ -38,7 +38,7 @@ class AuthenticationController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => 'De oppgitte legitimasjonene samsvarer ikke med våre oppføringer.',
         ]);
     }
 
@@ -48,7 +48,7 @@ class AuthenticationController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('login')->with('status', 'Succesfully signed out.');
+        return redirect()->route('login')->with('status', 'Du har logget ut.');
     }
 
     public function register(Request $request): RedirectResponse
@@ -96,6 +96,6 @@ class AuthenticationController extends Controller
 
         $user->save();
 
-        return redirect()->route('login')->with('status', 'You can now log in with your new account.');
+        return redirect()->route('login')->with('status', 'Du kan nå logge inn med din nye konto.');
     }
 }

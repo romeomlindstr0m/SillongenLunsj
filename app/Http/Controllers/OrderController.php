@@ -25,6 +25,6 @@ class OrderController extends Controller
     {
         $order = Order::findOrFail($id);
         $order->delete();
-        return back()->with('status', 'Order has been successfully deleted.');
+        return back()->with('status', 'Bestillingen har blitt slettet.');
     }
 }

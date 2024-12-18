@@ -32,7 +32,7 @@ class UserController extends Controller
         $target_user = User::findOrFail($id);
         $target_user->delete();
 
-        return back()->with('session', 'Successfully removed user.');
+        return back()->with('session', 'Brukeren ble fjernet.');
     }
 
     public function edit($id): View
@@ -91,6 +91,6 @@ class UserController extends Controller
 
         $user->save();
 
-        return back()->with('status', 'Successfully created a new account.');
+        return back()->with('status', 'En ny konto ble opprettet.');
     }
 }
