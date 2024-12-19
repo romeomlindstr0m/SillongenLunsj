@@ -40,7 +40,11 @@
                 <dd class="mt-1 text-sm/6 text-gray-700 sm:mt-2">
                     <ul>
                     @foreach ($order->items as $item)
-                        <li>{{ $item['sku'] }}</li>
+                        <li>
+                          Varenummer: {{ $item['sku'] }}
+                          Produktnavn: {{ $item['name'] }}
+                          Antall: {{ $item['quantity'] }}
+                        </li>
                     @endforeach
                     </ul>
                 </dd>
