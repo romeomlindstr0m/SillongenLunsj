@@ -17,7 +17,7 @@
     @endif
     <div class="bg-white">
         <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-          <form action="{{ route('items.store') }}" method="POST">
+          <form action="{{ route('orders.store') }}" method="POST">
             @csrf
             @foreach ($grouped_items as $category_id => $items)
                 <h2 class="text-3xl font-bold tracking-tight text-gray-900 mb-4">{{ $items->first()->category->name }}</h2>
