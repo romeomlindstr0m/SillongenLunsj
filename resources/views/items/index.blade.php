@@ -81,13 +81,21 @@
                 <div class="sm:col-span-2">
                   <label for="contact_person" class="block text-sm/6 font-semibold text-gray-900">Kontaktperson</label>
                   <div class="mt-2.5">
-                    <input type="text" name="contact_person" id="contact_person" class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600">
+                    <input type="text"
+                    @auth
+                      value="{{ auth()->user()->first_name . ' ' . auth()->user()->last_name }}"
+                    @endauth
+                    name="contact_person" id="contact_person" class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600">
                   </div>
                 </div>
                 <div class="sm:col-span-2">
                   <label for="email" class="block text-sm/6 font-semibold text-gray-900">E-postaddresse</label>
                   <div class="mt-2.5">
-                    <input type="email" name="email" id="email" autocomplete="email" class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600">
+                    <input type="email"
+                    @auth
+                      value="{{ auth()->user()->email }}"
+                    @endauth
+                    name="email" id="email" class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600">
                   </div>
                 </div>
                 <div class="sm:col-span-2">
