@@ -8,6 +8,9 @@
 </head>
 <body class="font-inter">
     <x-navbar />
+    @session('status')
+      <x-notification-banner :message="session('status')" />
+    @endsession
     <div class="px-4 sm:px-6 lg:px-8 w-3/4 mx-auto mt-12">
         <div class="sm:flex sm:items-center">
           <div class="sm:flex-auto">
@@ -40,8 +43,13 @@
                             <td class="hidden whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 sm:table-cell">{{ $item->price }}</td>
                             <td class="hidden whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 lg:table-cell">{{ $item->sku }}</td>
                             <td class="whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500">{{ $item->category->name }}</td>
-                            <td class="relative whitespace-nowrap border-b border-gray-200 py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-8 lg:pr-8">
-                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                            <td class="relative flex whitespace-nowrap border-b border-gray-200 py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-8 lg:pr-8">
+                              <a href="{{ route('items.edit', ['id' => $item->id]) }}" class="text-indigo-600 hover:text-indigo-900">Rediger</a>
+                              <span class="mx-2">|</span>
+                                <form action="{{ route('items.destroy', ['id' => $item->id]) }}" method="POST">
+                                  @csrf
+                                  <button type="submit" class="text-red-600 hover:text-red-800">Slett</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
