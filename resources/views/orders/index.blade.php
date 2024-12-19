@@ -7,13 +7,13 @@
   @vite('resources/css/app.css')
 </head>
 <body class="font-inter">
+    <x-navbar />
     @session('status')
       <x-notification-banner :message="session('status')" />
     @endsession
     @if ($errors->any())
       <x-authentication-failure :messages="$errors->all()" />
     @endif
-    <x-navbar />
     <div class="px-4 sm:px-6 lg:px-8 w-3/4 mx-auto mt-12">
         <div class="sm:flex sm:items-center">
           <div class="sm:flex-auto">
