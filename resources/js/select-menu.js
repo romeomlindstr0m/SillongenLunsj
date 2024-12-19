@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
       options[selectedOptionIndex].classList.remove("text-gray-900");
     };
   
-    const hiddenInput = document.getElementById("role-id-input");
+    const hiddenInput = document.querySelector(".select-input");
 
     const selectOption = (index) => {
       const selectedOption = options[index];
@@ -35,14 +35,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       hiddenInput.value = selectedValue;
   
-      // Update aria-activedescendant for accessibility
       dropdown.setAttribute("aria-activedescendant", selectedOption.id);
   
-      // Hide the dropdown
       toggleDropdown(false);
     };
   
-    // Event listeners
     button.addEventListener("click", () => toggleDropdown());
     button.addEventListener("keydown", (event) => {
       if (event.key === "ArrowDown" || event.key === "ArrowUp") {
@@ -78,13 +75,11 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   
-    // Close dropdown when clicking outside
     document.addEventListener("click", (event) => {
       if (!button.contains(event.target) && !dropdown.contains(event.target)) {
         toggleDropdown(false);
       }
     });
   
-    // Initialize the selected option
     updateSelectedOption(selectedOptionIndex);
   });  

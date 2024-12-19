@@ -23,7 +23,12 @@
                 <div class="mt-20 mb-8 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                     @foreach ($items as $item)
                         <div class="group relative">
-                        <img src="https://tailwindui.com/plus/img/ecommerce-images/product-page-01-related-product-01.jpg" alt="Front of men&#039;s Basic Tee in black." class="aspect-square w-full rounded-md bg-gray-200 object-cover lg:aspect-auto lg:h-80">
+                        @if ($item->image_path)
+                          <img src="{{ asset('storage/' . $item->image_path) }}" alt="Menu item image"
+                        @else
+                          <img src="{{ asset('images/item_placeholder.jpg') }}" alt="Menu item image"
+                        @endif
+                        class="aspect-square w-full rounded-md bg-gray-200 object-cover lg:aspect-auto lg:h-80">
                         <div class="mt-4 flex justify-between">
                             <div>
                             <h3 class="text-sm text-gray-700">

@@ -20,7 +20,6 @@
           <div class="mt-8">
             <h3 class="text-base font-semibold text-gray-900">
               <a href="{{ route('users.index') }}" class="focus:outline-none">
-                <!-- Extend touch target to entire panel -->
                 <span class="absolute inset-0" aria-hidden="true"></span>
                 Brukeradministrasjon
               </a>
@@ -43,8 +42,7 @@
           </div>
           <div class="mt-8">
             <h3 class="text-base font-semibold text-gray-900">
-              <a href="#" class="focus:outline-none">
-                <!-- Extend touch target to entire panel -->
+              <a href="{{ route('items.table') }}" class="focus:outline-none">
                 <span class="absolute inset-0" aria-hidden="true"></span>
                 Menyadministrasjon
               </a>
@@ -69,7 +67,6 @@
           <div class="mt-8">
             <h3 class="text-base font-semibold text-gray-900">
               <a href="#" class="focus:outline-none">
-                <!-- Extend touch target to entire panel -->
                 <span class="absolute inset-0" aria-hidden="true"></span>
                 Menykategorier
               </a>
@@ -93,7 +90,6 @@
           <div class="mt-8">
             <h3 class="text-base font-semibold text-gray-900">
               <a href="#" class="focus:outline-none">
-                <!-- Extend touch target to entire panel -->
                 <span class="absolute inset-0" aria-hidden="true"></span>
                 Serverlogger
               </a>

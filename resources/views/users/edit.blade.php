@@ -64,7 +64,7 @@
         
             </ul>
           </div>
-          <input type="hidden" name="role_id" id="role-id-input" value="{{ $user->role->id }}">
+          <input class="select-input" type="hidden" name="role_id" value="{{ $user->role->id }}">
         </div>
 
         <div>
