@@ -2,61 +2,53 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rules\Password;
-
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\User;
 
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Validator;
+
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Role;
 
-class AuthenticationController extends Controller
+class UserController extends Controller
 {
-    public function showLoginForm(): View
+    public function index(): View
     {
-        return view('login');
+        $users = User::all();
+        return view('users.index')->with('users', $users);
     }
 
-    public function showRegisterForm(): View
+    public function create(): View
     {
-        return view('register');
+        $roles = Role::all();
+        return view('users.create')->with('roles', $roles);
     }
 
-    public function login(Request $request): RedirectResponse
+    public function destroy($id): RedirectResponse
     {
-        $authentication_details = $request->validate([
-            'email' => ['required'],
-            'password' => ['required'],
-        ]);
+        $target_user = User::findOrFail($id);
+        $target_user->delete();
 
-        if (Auth::attempt($authentication_details)) {
-            $request->session()->regenerate();
-            return redirect()->intended();
-        }
-
-        return back()->withErrors([
-            'email' => 'De oppgitte legitimasjonene samsvarer ikke med våre oppføringer.',
-        ]);
+        return back()->with('session', 'Brukeren ble fjernet.');
     }
 
-    public function logout(Request $request): RedirectResponse
+    public function edit($id): View
     {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return redirect()->route('login')->with('status', 'Du har logget ut.');
+        $user = User::findOrFail($id);
+        $roles = Role::all();
+        return view('users.edit')->with(['user' => $user, 'roles' => $roles]);
     }
 
-    public function register(Request $request): RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
         $rules = [
             'email' => ['required', 'max:255', 'unique:users,email', 'email:rfc'],
             'first_name' => ['required', 'max:255', 'string'],
             'last_name' => ['required', 'max:255', 'string'],
+            'role_id' => ['required', 'numeric', 'exists:roles,id'],
             'password' => ['required', 'confirmed', Password::min(6)->letters()->uncompromised()],
             'password_confirmation' => ['required'],
         ];
@@ -73,6 +65,9 @@ class AuthenticationController extends Controller
 
             'last_name.max' => 'Etternavnet kan ikke være lengre enn 255 tegn.',
             'last_name.string' => 'Etternavnet må være en gyldig tekststreng.',
+
+            'role_id.numeric' => 'Rollen må være en gyldig numerisk verdi.',
+            'role_id.exists' => 'Den valgte rollen eksisterer ikke.',
         
             'password.confirmed' => 'Passordene samsvarer ikke.',
             'password.min' => 'Passordet må være minst 6 tegn langt.',
@@ -80,7 +75,7 @@ class AuthenticationController extends Controller
             'password.uncompromised' => 'Passordet er funnet i en datalekkasje og er ikke sikkert. Velg et annet passord.',
         ];
 
-        $validator = Validator::make($request->only(['email', 'first_name', 'last_name', 'password', 'password_confirmation']), $rules, $messages);
+        $validator = Validator::make($request->only(['email', 'first_name', 'last_name', 'role_id', 'password', 'password_confirmation']), $rules, $messages);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator);
@@ -92,10 +87,10 @@ class AuthenticationController extends Controller
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->password = Hash::make($request->password);
-        $user->role_id = 2;
+        $user->role_id = $request->role_id;
 
         $user->save();
 
-        return redirect()->route('login')->with('status', 'Du kan nå logge inn med din nye konto.');
+        return back()->with('status', 'En ny konto ble opprettet.');
     }
 }
