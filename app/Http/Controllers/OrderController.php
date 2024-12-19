@@ -8,6 +8,7 @@ use Illuminate\View\View;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Item;
 
 class OrderController extends Controller
 {
@@ -72,8 +73,6 @@ class OrderController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $items_json = json_encode($request->input('items'));
-
         $order = new Order;
 
         $order->contact_person = $request->contact_person;
@@ -82,8 +81,20 @@ class OrderController extends Controller
         $order->company = $request->company;
         $order->delivery_location = $request->delivery_location;
         $order->message = $request->message;
-        $order->items = $items_json;
 
+        $items_id = array_keys($request->input('items'));
+        $items = Item::whereIn('id', $items_id)->get();
+
+        $items_array = [];
+        foreach ($items as $item) {
+            $items_array[$item->id] = [
+                'sku' => $item->sku,
+                'name' => $item->name,
+                'quantity' => $request->input("items.{$item->id}"),
+            ];
+        }
+
+        $order->items = $items_array;
         $order->save();
 
         return redirect()->back()->with('status', 'Bestillingen din er registrert og vil bli behandlet innen kort tid.');
