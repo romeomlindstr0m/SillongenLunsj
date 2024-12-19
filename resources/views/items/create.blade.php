@@ -23,7 +23,7 @@
     </div>
   
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-      <form class="space-y-6" action="{{ route('items.store') }}" method="POST">
+      <form class="space-y-6" action="{{ route('items.store') }}" enctype="multipart/form-data" method="POST">
         @csrf
         <div>
           <label for="name" class="block text-sm/6 font-medium text-gray-900">Navn</label>
@@ -69,7 +69,12 @@
           </div>
           <input type="hidden" class="select-input" name="category_id" value="">
         </div>
-  
+
+        <div>
+          <label class="block text-sm/6 font-medium text-gray-900">Bilde</label>
+          <input type="file" id="image" name="image" accept="image/png, image/jpeg, image/jpg" />
+        </div>
+
         <div>
           <button type="submit" class="flex w-full justify-center rounded-md bg-gray-900 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900">Fortsett</button>
         </div>
