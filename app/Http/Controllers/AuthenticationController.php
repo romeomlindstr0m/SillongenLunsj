@@ -12,6 +12,7 @@ use App\Models\User;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Role;
 
 class AuthenticationController extends Controller
 {
@@ -92,8 +93,13 @@ class AuthenticationController extends Controller
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->password = Hash::make($request->password);
-        $user->role_id = 2;
 
+        $user_role = Role::where('name', 'User')->firstOr(function () {
+            abort(500);
+        });
+
+        $user->role_id = $user_role->id;
+    
         $user->save();
 
         return redirect()->route('login')->with('status', 'Du kan nå logge inn med din nye konto.');
